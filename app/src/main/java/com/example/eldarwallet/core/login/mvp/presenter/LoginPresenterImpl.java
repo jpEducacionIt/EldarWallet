@@ -48,6 +48,5 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLog
     @Override
     public void onDestroyView() {
         view = null;
-
     }
 }

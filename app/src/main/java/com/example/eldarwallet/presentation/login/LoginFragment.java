@@ -9,8 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.eldarwallet.R;
+import com.example.eldarwallet.core.login.mvp.view.LoginView;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements LoginView, View.OnClickListener {
 
     public LoginFragment() { }
 
@@ -28,5 +29,35 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_login, container, false);
+    }
+
+    @Override
+    public void showProgressBar() {
+
+    }
+
+    @Override
+    public void hideProgressBar() {
+
+    }
+
+    @Override
+    public void setUserNameError() {
+
+    }
+
+    @Override
+    public void setPasswordError() {
+
+    }
+
+    @Override
+    public void navigateToDashboard() {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }
