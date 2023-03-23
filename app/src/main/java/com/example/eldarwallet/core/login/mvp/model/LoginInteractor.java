@@ -9,5 +9,5 @@ public interface LoginInteractor {
         void onSucces();
     }
 
-    void login (String userName, String password, OnLoginResultListener listener);
+    void login (String userName, String password, String sharedName, String sharedPassword, OnLoginResultListener listener);
 }

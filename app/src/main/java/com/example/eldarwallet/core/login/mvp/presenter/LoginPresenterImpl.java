@@ -14,10 +14,10 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLog
     }
 
     @Override
-    public void validateCredentials(String userName, String password) {
+    public void validateCredentials(String userName, String password, String sharedName, String sharedPassword) {
         if (view != null) {
             view.showProgressBar();
-            interactor.login(userName, password, this);
+            interactor.login(userName, password, sharedName, sharedPassword, this);
         }
     }
 
