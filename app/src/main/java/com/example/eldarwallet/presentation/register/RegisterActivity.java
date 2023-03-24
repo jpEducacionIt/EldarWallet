@@ -7,14 +7,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.eldarwallet.core.register.mvp.model.RegisterInteractorImpl;
-import com.example.eldarwallet.core.register.mvp.presenter.RegisterPresenter;
-import com.example.eldarwallet.core.register.mvp.presenter.RegisterPresenterImpl;
-import com.example.eldarwallet.core.register.mvp.view.RegisterView;
+import com.example.eldarwallet.core.register.mvp.RegisterContracts;
+import com.example.eldarwallet.core.register.mvp.RegisterPresenter;
 import com.example.eldarwallet.databinding.ActivityRegisterBinding;
+import com.example.eldarwallet.infrastructure.repository.SharedPreferencesRepository;
 import com.example.eldarwallet.presentation.login.LoginActivity;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterView {
+public class RegisterActivity extends AppCompatActivity implements RegisterContracts.View {
 
     private ActivityRegisterBinding binding;
     private RegisterPresenter registerPresenter;
@@ -25,12 +24,18 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        registerPresenter = new RegisterPresenterImpl(this, new RegisterInteractorImpl());
+        registerPresenter = new RegisterPresenter(this);
 
         binding.buttonRegister.setOnClickListener(view1 -> {
-            String userName = String.valueOf(binding.editTextRegisterName.getText());
+            SharedPreferences preferences = getSharedPreferences("login preferences", MODE_PRIVATE);
+            SharedPreferencesRepository repository = new SharedPreferencesRepository(preferences);
+
+            String userName = String.valueOf(binding.editTextRegisterUserName.getText());
             String password = String.valueOf(binding.editTextRegisterPassword.getText());
-            registerPresenter.addCredentials(userName, password);
+            String name = String.valueOf(binding.editTextRegisterName.getText());
+            String lastName = String.valueOf(binding.editTextRegisterLastName.getText());
+
+            registerPresenter.addCredentials(userName, password, name, lastName, repository);
         });
     }
 
@@ -46,23 +51,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
 
     @Override
     public void setUserNameError() {
-        binding.editTextRegisterName.setError("Debe ser el nombre que figura en su tarjeta, sin numeros ni simbolos");
+        binding.editTextRegisterUserName.setError("Debe ser el nombre que figura en su tarjeta, sin numeros ni simbolos");
     }
 
     @Override
     public void setPasswordError() {
         binding.editTextRegisterPassword.setError("Password Incorrecto");
-    }
-
-    @Override
-    public void saveCredentials(String userName, String password) {
-        SharedPreferences preferences = getSharedPreferences("login preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("user_name", userName);
-        editor.putString("user_password" , password);
-        editor.apply();
-
-        registerPresenter.credentialsSaved();
     }
 
     @Override
