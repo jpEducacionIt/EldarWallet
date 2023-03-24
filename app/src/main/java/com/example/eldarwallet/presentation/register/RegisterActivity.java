@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
     @Override
     public void setUserNameError() {
-        binding.editTextRegisterUserName.setError("Debe ser el nombre que figura en su tarjeta, sin numeros ni simbolos");
+        binding.editTextRegisterUserName.setError("El userName no puede incluir numeros ni simbolos");
     }
 
     @Override
