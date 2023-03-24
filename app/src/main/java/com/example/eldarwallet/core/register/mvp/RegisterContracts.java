@@ -13,7 +13,7 @@ public interface RegisterContracts {
     }
 
     interface Presenter {
-        void addCredentials(String userName, String password, String name, String lastName, SharedPreferencesRepository repository);
+        void addCredentials(String userName, String password, SharedPreferencesRepository repository);
         void onDestroyView();
         void userNameError();
         void passwordError();
@@ -21,6 +21,6 @@ public interface RegisterContracts {
     }
 
     interface Model {
-        void register(String userName, String password, String name, String lastName, SharedPreferencesRepository repository);
+        void register(String userName, String password, SharedPreferencesRepository repository);
     }
 }

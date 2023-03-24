@@ -17,12 +17,10 @@ public class SharedPreferencesRepository {
         return preferences.getString("user_password", "");
     }
 
-    public void setPreferences(String userName, String password, String name, String lastName) {
+    public void setPreferences(String userName, String password) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("user_name", userName);
         editor.putString("user_password" , password);
-        editor.putString("name", name);
-        editor.putString("last_name" , lastName);
         editor.apply();
     }
 }

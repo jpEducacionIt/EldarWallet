@@ -32,10 +32,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
             String userName = String.valueOf(binding.editTextRegisterUserName.getText());
             String password = String.valueOf(binding.editTextRegisterPassword.getText());
-            String name = String.valueOf(binding.editTextRegisterName.getText());
-            String lastName = String.valueOf(binding.editTextRegisterLastName.getText());
 
-            registerPresenter.addCredentials(userName, password, name, lastName, repository);
+            registerPresenter.addCredentials(userName, password, repository);
         });
     }
 

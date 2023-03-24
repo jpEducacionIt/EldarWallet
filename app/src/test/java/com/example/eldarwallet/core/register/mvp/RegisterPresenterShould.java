@@ -62,7 +62,7 @@ public class RegisterPresenterShould {
     }
 
     private void whenValidateData(String userName, String password, String name, String lastName ) {
-        presenter.addCredentials(userName, password, name, lastName, repository);
+        presenter.addCredentials(userName, password, repository);
     }
 
     private void thenLoginIsValid() {

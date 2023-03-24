@@ -28,48 +28,48 @@ public class RegisterModelShould {
 
     @Test
     public void successWithValidNameAndPassword() throws Exception {
-        whenValidateData("juan", "1234", "", "");
+        whenValidateData("juan", "1234");
 
         thenLoginIsValid();
     }
 
     @Test
     public void saveUserNameAndPasswordInRepository() throws Exception {
-        whenValidateData("juan", "1234", "pablo", "herrero");
+        whenValidateData("juan", "1234");
 
-        thenSavedInRepository("juan", "1234", "pablo", "herrero");
+        thenSavedInRepository("juan", "1234");
     }
 
     @Test
     public void showErrorInvalidNameWithNumbers() throws Exception {
-        whenValidateData("juan1234", "1234", "", "");
+        whenValidateData("juan1234", "1234");
 
         thenLoginHasInvalidName();
     }
 
     @Test
     public void showErrorInvalidNameWithSpecialChar() throws Exception {
-        whenValidateData("juan?=", "1234", "", "");
+        whenValidateData("juan?=", "1234");
 
         thenLoginHasInvalidName();
     }
 
     @Test
     public void showErrorWithEmptyUserName() throws Exception {
-        whenValidateData("", "1234", "", "");
+        whenValidateData("", "1234");
 
         thenLoginHasInvalidName();
     }
 
     @Test
     public void showErrorWithEmptyPassword() throws Exception {
-        whenValidateData("juan", "", "", "");
+        whenValidateData("juan", "");
 
         thenLoginHasInvalidPassword();
     }
 
-    private void whenValidateData(String userName, String password, String name, String lastName) {
-        model.register(userName, password, name, lastName, repository);
+    private void whenValidateData(String userName, String password) {
+        model.register(userName, password, repository);
     }
 
     private void thenLoginIsValid() {
@@ -84,7 +84,7 @@ public class RegisterModelShould {
         Mockito.verify(presenter).passwordError();
     }
 
-    private void thenSavedInRepository(String userName, String password, String name, String lastName) {
-        Mockito.verify(repository).setPreferences(userName, password,  "pablo", "herrero");
+    private void thenSavedInRepository(String userName, String password) {
+        Mockito.verify(repository).setPreferences(userName, password);
     }
 }

@@ -14,10 +14,10 @@ public class RegisterPresenter implements RegisterContracts.Presenter{
     }
 
     @Override
-    public void addCredentials(String userName, String password, String name, String lastName,  SharedPreferencesRepository repository) {
+    public void addCredentials(String userName, String password, SharedPreferencesRepository repository) {
         if (view != null) {
             view.showProgressBar();
-            model.register(userName, password, name, lastName, repository);
+            model.register(userName, password, repository);
         }
     }
 

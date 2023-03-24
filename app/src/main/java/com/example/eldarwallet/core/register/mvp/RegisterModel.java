@@ -12,7 +12,7 @@ public class RegisterModel implements RegisterContracts.Model{
         this.presenter = presenter;
     }
     @Override
-    public void register(String userName, String password, String name, String lastName,SharedPreferencesRepository repository) {
+    public void register(String userName, String password,SharedPreferencesRepository repository) {
         if (checkIsEmpty(userName) || checkOnlyLetters(userName)) {
             presenter.userNameError();
             return;
@@ -23,7 +23,7 @@ public class RegisterModel implements RegisterContracts.Model{
             return;
         }
 
-        repository.setPreferences(userName, password, name, lastName);
+        repository.setPreferences(userName, password);
         presenter.onSuccess();
     }
 

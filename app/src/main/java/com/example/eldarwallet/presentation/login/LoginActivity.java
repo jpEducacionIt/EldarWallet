@@ -2,6 +2,7 @@ package com.example.eldarwallet.presentation.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.example.eldarwallet.core.login.mvp.LoginContracts;
 import com.example.eldarwallet.core.login.mvp.LoginPresenter;
 import com.example.eldarwallet.databinding.ActivityLoginBinding;
 import com.example.eldarwallet.infrastructure.repository.SharedPreferencesRepository;
+import com.example.eldarwallet.presentation.dashboard.DashboardActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginContracts.View {
     private LoginPresenter loginPresenter;
@@ -59,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContracts.V
 
     @Override
     public void navigateToDashboard() {
-        Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, DashboardActivity.class));
     }
 
     @Override
