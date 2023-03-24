@@ -41,28 +41,28 @@ public class RegisterModelShould {
     }
 
     @Test
-    public void unSuccessfulInvalidNameWithNumbers() throws Exception {
+    public void showErrorInvalidNameWithNumbers() throws Exception {
         whenValidateData("juan1234", "1234", "", "");
 
         thenLoginHasInvalidName();
     }
 
     @Test
-    public void unSuccessfulInvalidNameWithSpecialChar() throws Exception {
+    public void showErrorInvalidNameWithSpecialChar() throws Exception {
         whenValidateData("juan?=", "1234", "", "");
 
         thenLoginHasInvalidName();
     }
 
     @Test
-    public void unSuccessWithEmptyUserName() throws Exception {
+    public void showErrorWithEmptyUserName() throws Exception {
         whenValidateData("", "1234", "", "");
 
         thenLoginHasInvalidName();
     }
 
     @Test
-    public void unSuccessWithEmptyPassword() throws Exception {
+    public void showErrorWithEmptyPassword() throws Exception {
         whenValidateData("juan", "", "", "");
 
         thenLoginHasInvalidPassword();
