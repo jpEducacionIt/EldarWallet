@@ -1,11 +1,15 @@
 package com.example.eldarwallet.presentation.cardform
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import com.example.eldarwallet.R
 import com.example.eldarwallet.databinding.FragmentCardFormBinding
 
 class CardFormFragment : Fragment() {
@@ -26,21 +30,39 @@ class CardFormFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonAddNewCard.setOnClickListener {
+        binding.etCardNumber.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                return
+            }
 
-            val pattern1 = binding.etNumber1.text.toString()
-            val pattern2 = binding.etNumber2.text.toString()
-            val pattern3 = binding.etNumber3.text.toString()
-            val pattern4 = binding.etNumber4.text.toString()
-            val cardNumer = pattern1+pattern2+pattern3+pattern4
-            val surname = binding.etCardSurname.text.toString()
-            val name = binding.etCardName.text.toString()
-            val monthExp = binding.etExpiryMonth.text.toString()
-            val yearExp = binding.etExpiryYear.text.toString()
-            val cvv = binding.etCvv.text.toString()
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
-            //"$pattern1\t$pattern2\t$pattern3\t$pattern4".also { binding.textViewCreditCardNumber.text = it }
+            }
 
-        }
+            override fun afterTextChanged(text: Editable?) {
+                if (text?.length != 0) {
+                    val cardImage = when (text?.get(0)?.toString()) {
+                        "3" -> R.drawable.amex
+                        "4" -> R.drawable.visa
+                        "5" -> R.drawable.mastercard
+                        else -> R.drawable.baseline_add_card_24
+                    }
+                    binding.imageViewCardImage.visibility = View.VISIBLE
+                    binding.imageViewCardImage.setImageResource(cardImage)
+                } else {
+                    binding.imageViewCardImage.visibility = View.INVISIBLE
+                }
+            }
+        })
+        val cardNumber = binding.etCardNumber.text.toString()
+        val surname = binding.etCardSurname.text.toString()
+        val name = binding.etCardName.text.toString()
+        val expiry = binding.etExpiry.text.toString()
+        val cvv = binding.etCvv.text.toString()
+
+
+        //"$pattern1\t$pattern2\t$pattern3\t$pattern4".also { binding.textViewCreditCardNumber.text = it }
+
+
     }
 }
