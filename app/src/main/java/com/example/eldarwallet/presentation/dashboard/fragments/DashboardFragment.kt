@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.eldarwallet.R
 import com.example.eldarwallet.databinding.FragmentDashboardBinding
-import com.example.eldarwallet.infrastructure.representation.UserCardsData
 
 class DashboardFragment : Fragment() {
 
@@ -16,7 +18,7 @@ class DashboardFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var dashboardAdapter: DashboardAdapter
 
-    private val viewModel by viewModels<DashboardViewModel>()
+    private val viewModel by viewModels<DashboardViewModel> { DashboardViewModelFactory(requireActivity().application) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,19 +44,18 @@ class DashboardFragment : Fragment() {
             adapter = dashboardAdapter
         }
 
-        dashboardAdapter.submitList(listOfCards())
+        viewModel.onShow()
 
+        viewModel.userVerificationData.observe(viewLifecycleOwner, Observer {
+            dashboardAdapter.submitList(it.data)
+        })
+
+        binding.buttonAddCard.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboardFragment_to_cardFormFragment2)
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun listOfCards(): List<UserCardsData> {
-        return listOf(
-            UserCardsData(1, "3", "pepe", "grillo", "371180303257522", "1234", "1125"),
-            UserCardsData(2, "4", "jose", "grillo", "4509953566233704", "123", "1125"),
-            UserCardsData(3, "5", "pepe", "grillo", "5031755734530604", "123", "1125"),
-        )
     }
 }

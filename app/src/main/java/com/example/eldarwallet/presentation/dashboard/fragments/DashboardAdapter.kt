@@ -9,17 +9,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eldarwallet.R
-import com.example.eldarwallet.infrastructure.representation.UserCardsData
+import com.example.eldarwallet.infrastructure.representation.UserVerificationData
 
-class DashboardAdapter : ListAdapter<UserCardsData, DashboardAdapter.ViewHolder>(DiffCallBack) {
+class DashboardAdapter : ListAdapter<UserVerificationData, DashboardAdapter.ViewHolder>(DiffCallBack) {
 
-    lateinit var onItemClickListener: (UserCardsData) -> Unit
+    lateinit var onItemClickListener: (UserVerificationData) -> Unit
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val creditCardNumber: TextView = view.findViewById(R.id.item_list_card_number)
         private val creditCardImage: ImageView = view.findViewById(R.id.itemListCarLogo)
 
-        fun bind (card: UserCardsData) {
+        fun bind (card: UserVerificationData) {
             creditCardNumber.text = card.number
 
             val image = when(card.typeCard) {
@@ -48,12 +48,12 @@ class DashboardAdapter : ListAdapter<UserCardsData, DashboardAdapter.ViewHolder>
         holder.bind(userData)
     }
 
-    companion object DiffCallBack : DiffUtil.ItemCallback<UserCardsData>() {
-        override fun areItemsTheSame(oldItem: UserCardsData, newItem: UserCardsData): Boolean {
+    companion object DiffCallBack : DiffUtil.ItemCallback<UserVerificationData>() {
+        override fun areItemsTheSame(oldItem: UserVerificationData, newItem: UserVerificationData): Boolean {
             return  oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: UserCardsData, newItem: UserCardsData): Boolean {
+        override fun areContentsTheSame(oldItem: UserVerificationData, newItem: UserVerificationData): Boolean {
             return oldItem == newItem
         }
     }

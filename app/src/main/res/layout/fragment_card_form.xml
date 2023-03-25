@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".presentation.cardform.CardFormFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintCard"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/credit_card_rectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCardSurname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="40dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            tools:text="Grillo" />
+
+        <TextView
+            android:id="@+id/tvCardName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCardSurname"
+            app:layout_constraintStart_toEndOf="@+id/tvCardSurname"
+            app:layout_constraintTop_toTopOf="@+id/tvCardSurname"
+            tools:text="Pepito" />
+
+        <ImageView
+            android:id="@+id/imageViewCardImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/visa"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="@+id/imageView3" />
+
+        <TextView
+            android:id="@+id/textViewCreditCardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/credit_card_code"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="EXPIRY"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCreditCardNumber" />
+
+        <TextView
+            android:id="@+id/tvExpiryMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/textView8"
+            tools:text="06" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="MM"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvExpiryMonth"
+            app:layout_constraintStart_toStartOf="@+id/tvExpiryMonth"
+            app:layout_constraintTop_toBottomOf="@+id/tvExpiryMonth" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="YY"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvExpiryYear"
+            app:layout_constraintStart_toStartOf="@+id/tvExpiryYear"
+            app:layout_constraintTop_toBottomOf="@+id/tvExpiryYear" />
+
+        <TextView
+            android:id="@+id/tvExpiryYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tvExpiryMonth"
+            app:layout_constraintStart_toEndOf="@+id/tvExpiryMonth"
+            app:layout_constraintTop_toTopOf="@+id/tvExpiryMonth"
+            tools:text="25" />
+
+        <TextView
+            android:id="@+id/tvCvv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:text="CVV"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tvExpiryYear"
+            app:layout_constraintStart_toEndOf="@+id/tvExpiryYear"
+            app:layout_constraintTop_toTopOf="@+id/tvExpiryYear" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="ENTER 6-DIGITS NUMBER"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/constraint2"
+            app:layout_constraintTop_toTopOf="@+id/constraint2" />
+
+        <EditText
+            android:id="@+id/etNumber1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="xxxx"
+            android:inputType="number"
+            android:maxLength="4"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:textColorHint="@color/teal_700"
+            app:layout_constraintStart_toStartOf="@+id/textView14"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <EditText
+            android:id="@+id/etNumber2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:hint="xxxx"
+            android:inputType="number"
+            android:maxLength="4"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:textColorHint="@color/teal_700"
+            app:layout_constraintStart_toEndOf="@+id/etNumber1"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <EditText
+            android:id="@+id/etNumber3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:hint="xxxx"
+            android:inputType="number"
+            android:maxLength="4"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:textColorHint="@color/teal_700"
+            app:layout_constraintStart_toEndOf="@+id/etNumber2"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <EditText
+            android:id="@+id/etNumber4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:hint="xxxx"
+            android:inputType="number"
+            android:maxLength="4"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:textColorHint="@color/teal_700"
+            app:layout_constraintStart_toEndOf="@+id/etNumber3"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="CARD HOLDER SURNAME"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etNumber1" />
+
+        <EditText
+            android:id="@+id/etCardSurname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:hint="surname"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="CARD HOLDER NAME"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/etCardSurname"
+            app:layout_constraintTop_toBottomOf="@+id/etCardSurname" />
+
+        <EditText
+            android:id="@+id/etCardName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:hint="name"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView17"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="EXPIRY"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/etCardName"
+            app:layout_constraintTop_toBottomOf="@+id/etCardName" />
+
+        <EditText
+            android:id="@+id/etExpiryMonth"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="MM"
+            android:inputType="number"
+            android:maxLength="2"
+            android:minHeight="48dp"
+            android:textColorHint="@color/teal_700"
+            app:layout_constraintStart_toStartOf="@+id/textView19"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+        <EditText
+            android:id="@+id/etExpiryYear"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:hint="YY"
+            android:inputType="number"
+            android:maxLength="2"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:textColorHint="@color/teal_700"
+            app:layout_constraintStart_toEndOf="@+id/etExpiryMonth"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:text="CVV"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/etExpiryYear"
+            app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+        <EditText
+            android:id="@+id/etCvv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="xxxx"
+            android:inputType="number"
+            android:maxLength="4"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:textColorHint="@color/teal_700"
+            app:layout_constraintEnd_toEndOf="@+id/textView21"
+            app:layout_constraintStart_toStartOf="@+id/textView21"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <Button
+            android:id="@+id/buttonAddNewCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/purple"
+            android:text="add card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/buttonConfirmNewCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/purple"
+            android:text="confirm card"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,8 @@ import com.example.eldarwallet.databinding.ActivityMainBinding;
 import com.example.eldarwallet.presentation.login.LoginActivity;
 import com.example.eldarwallet.presentation.register.RegisterActivity;
 
+import java.io.InputStream;
+
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private SharedPreferences preferences;

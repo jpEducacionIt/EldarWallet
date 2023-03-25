@@ -9,5 +9,14 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.eldarwallet.presentation.dashboard.fragments.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_cardFormFragment2"
+            app:destination="@id/cardFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardFormFragment"
+        android:name="com.example.eldarwallet.presentation.cardform.CardFormFragment"
+        android:label="fragment_card_form"
+        tools:layout="@layout/fragment_card_form" />
 </navigation>
