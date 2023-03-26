@@ -14,9 +14,5 @@ class DashboardViewModel(application: Application) : ViewModel() {
     private val repository = InAppCreditUserDataRepositoryImp(database)
     private val getAllCreditCardsData = GetAllCreditCardsData(repository)
 
-    val userCreditData : LiveData<List<UserDataEntity>>
-
-    init {
-        userCreditData = getAllCreditCardsData()
-    }
+    val userCreditData : LiveData<List<UserDataEntity>> = getAllCreditCardsData()
 }

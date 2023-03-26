@@ -31,8 +31,7 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,6 +49,10 @@ class DashboardFragment : Fragment() {
 
         binding.buttonAddCard.setOnClickListener {
             findNavController().navigate(R.id.action_dashboardFragment_to_cardFormFragment2)
+        }
+
+        binding.buttonQr.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboardFragment_to_qrCodeFragment)
         }
     }
     override fun onDestroyView() {

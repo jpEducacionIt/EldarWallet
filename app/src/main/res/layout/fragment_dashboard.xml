@@ -41,7 +41,7 @@
 
         <ImageButton
             android:id="@+id/buttonAddCard"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+            app:layout_constraintEnd_toStartOf="@+id/buttonQr"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
@@ -52,7 +52,7 @@
             android:backgroundTint="@color/rose" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/buttonQr"
             app:layout_constraintBottom_toBottomOf="@+id/buttonAddCard"
             app:layout_constraintEnd_toStartOf="@+id/imageButton3"
             app:layout_constraintHorizontal_bias="0.5"
@@ -64,10 +64,10 @@
 
         <ImageButton
             android:id="@+id/imageButton3"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonQr"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageButton2"
+            app:layout_constraintStart_toEndOf="@+id/buttonQr"
             app:srcCompat="@drawable/baseline_payments_24"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -96,9 +96,9 @@
 
         <TextView
             android:id="@+id/textView6"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-            app:layout_constraintStart_toStartOf="@+id/imageButton2"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+            app:layout_constraintEnd_toEndOf="@+id/buttonQr"
+            app:layout_constraintStart_toStartOf="@+id/buttonQr"
+            app:layout_constraintTop_toBottomOf="@+id/buttonQr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"

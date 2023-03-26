@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_cardFormFragment2"
             app:destination="@id/cardFormFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_qrCodeFragment"
+            app:destination="@id/qrCodeFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardFormFragment"
@@ -23,4 +26,9 @@
             android:id="@+id/action_cardFormFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/qrCodeFragment"
+        android:name="com.example.eldarwallet.presentation.qrcode.QrCodeFragment"
+        android:label="fragment_qr_code"
+        tools:layout="@layout/fragment_qr_code" />
 </navigation>
