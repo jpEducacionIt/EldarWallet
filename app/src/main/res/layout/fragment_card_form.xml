@@ -237,10 +237,11 @@
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
         android:text="CVV"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@+id/textView19"
-        tools:layout_editor_absoluteX="196dp" />
+        app:layout_constraintStart_toEndOf="@+id/etExpiry"
+        app:layout_constraintTop_toTopOf="@+id/textView19" />
 
     <EditText
         android:id="@+id/etCvv"

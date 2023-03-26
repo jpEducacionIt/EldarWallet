@@ -9,17 +9,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eldarwallet.R
-import com.example.eldarwallet.infrastructure.representation.UserVerificationData
+import com.example.eldarwallet.infrastructure.representation.UserCardData
 
-class DashboardAdapter : ListAdapter<UserVerificationData, DashboardAdapter.ViewHolder>(DiffCallBack) {
+class DashboardAdapter : ListAdapter<UserCardData, DashboardAdapter.ViewHolder>(DiffCallBack) {
 
-    lateinit var onItemClickListener: (UserVerificationData) -> Unit
+    lateinit var onItemClickListener: (UserCardData) -> Unit
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val creditCardNumber: TextView = view.findViewById(R.id.item_list_card_number)
         private val creditCardImage: ImageView = view.findViewById(R.id.itemListCarLogo)
 
-        fun bind (card: UserVerificationData) {
+        fun bind (card: UserCardData) {
             creditCardNumber.text = card.number
 
             val image = when(card.typeCard) {
@@ -27,6 +27,8 @@ class DashboardAdapter : ListAdapter<UserVerificationData, DashboardAdapter.View
                 "4" -> R.drawable.mastercard
                 else -> {R.drawable.visa}
             }
+
+
 
             creditCardImage.setImageResource(image)
 
@@ -48,12 +50,12 @@ class DashboardAdapter : ListAdapter<UserVerificationData, DashboardAdapter.View
         holder.bind(userData)
     }
 
-    companion object DiffCallBack : DiffUtil.ItemCallback<UserVerificationData>() {
-        override fun areItemsTheSame(oldItem: UserVerificationData, newItem: UserVerificationData): Boolean {
+    companion object DiffCallBack : DiffUtil.ItemCallback<UserCardData>() {
+        override fun areItemsTheSame(oldItem: UserCardData, newItem: UserCardData): Boolean {
             return  oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: UserVerificationData, newItem: UserVerificationData): Boolean {
+        override fun areContentsTheSame(oldItem: UserCardData, newItem: UserCardData): Boolean {
             return oldItem == newItem
         }
     }

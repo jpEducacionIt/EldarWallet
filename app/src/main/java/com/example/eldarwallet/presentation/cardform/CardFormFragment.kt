@@ -7,17 +7,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.eldarwallet.R
+import com.example.eldarwallet.core.domain.CardHolderResponse
 import com.example.eldarwallet.databinding.FragmentCardFormBinding
 
 class CardFormFragment : Fragment() {
     private var _binding: FragmentCardFormBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel by viewModels<CarFormViewModel>()
-
+    private val viewModel by viewModels<CardFormViewModel> { CardFormViewModelFactory(requireActivity().application) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,15 +55,35 @@ class CardFormFragment : Fragment() {
                 }
             }
         })
+
+        binding.buttonAddNewCard.setOnClickListener {
+            val surname = binding.etCardSurname.text.toString()
+            val name = binding.etCardName.text.toString()
+            viewModel.onShow(surname, name)
+        }
+
+        viewModel.userDataVerificationStatus.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                CardHolderResponse.SUCCESS -> saveNewCreditCard()
+                else -> {
+                    Toast.makeText(requireActivity(), "Error al ingresar datos", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
+
+        //"$pattern1\t$pattern2\t$pattern3\t$pattern4".also { binding.textViewCreditCardNumber.text = it }
+
+    }
+
+    private fun saveNewCreditCard() {
         val cardNumber = binding.etCardNumber.text.toString()
         val surname = binding.etCardSurname.text.toString()
         val name = binding.etCardName.text.toString()
         val expiry = binding.etExpiry.text.toString()
         val cvv = binding.etCvv.text.toString()
 
-
-        //"$pattern1\t$pattern2\t$pattern3\t$pattern4".also { binding.textViewCreditCardNumber.text = it }
-
-
+        viewModel.saveNewCreditCard(cardNumber, surname, name, expiry, cvv)
     }
+
 }
