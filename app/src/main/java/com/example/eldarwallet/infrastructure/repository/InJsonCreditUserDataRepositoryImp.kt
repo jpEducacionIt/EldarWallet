@@ -1,16 +1,15 @@
 package com.example.eldarwallet.infrastructure.repository
 
 import android.app.Application
-import com.example.eldarwallet.core.repository.UserDataRepository
+import com.example.eldarwallet.core.repository.InJsonCreditUserDataRepository
 import com.example.eldarwallet.infrastructure.representation.UserVerificationData
 import com.google.gson.Gson
 import java.io.InputStream
 
-class InJsonUserDataRepositoryImp(private val application: Application) : UserDataRepository {
+class InJsonCreditUserDataRepositoryImp(private val application: Application) : InJsonCreditUserDataRepository {
 
     override fun find(): UserVerificationData {
-        val json = Gson().fromJson(getJson(), UserVerificationData::class.java)
-        return json
+        return Gson().fromJson(getJson(), UserVerificationData::class.java)
     }
 
     private fun getJson(): String? {

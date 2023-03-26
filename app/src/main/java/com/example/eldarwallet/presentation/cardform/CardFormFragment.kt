@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.eldarwallet.R
 import com.example.eldarwallet.core.domain.CardHolderResponse
+import com.example.eldarwallet.core.domain.SaveInAppResponse
 import com.example.eldarwallet.databinding.FragmentCardFormBinding
 
 class CardFormFragment : Fragment() {
@@ -59,7 +61,7 @@ class CardFormFragment : Fragment() {
         binding.buttonAddNewCard.setOnClickListener {
             val surname = binding.etCardSurname.text.toString()
             val name = binding.etCardName.text.toString()
-            viewModel.onShow(surname, name)
+            viewModel.validateCardHolderData(surname, name)
         }
 
         viewModel.userDataVerificationStatus.observe(viewLifecycleOwner, Observer {
@@ -71,9 +73,18 @@ class CardFormFragment : Fragment() {
             }
         })
 
+        viewModel.navigateToDashboard.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                SaveInAppResponse.SUCCESS -> navigateToDashboard()
+                else -> {
+                    Toast.makeText(requireActivity(), "Error al grabar in App", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+    }
 
-        //"$pattern1\t$pattern2\t$pattern3\t$pattern4".also { binding.textViewCreditCardNumber.text = it }
-
+    private fun navigateToDashboard() {
+        findNavController().navigate(R.id.action_cardFormFragment_to_dashboardFragment)
     }
 
     private fun saveNewCreditCard() {
@@ -83,7 +94,6 @@ class CardFormFragment : Fragment() {
         val expiry = binding.etExpiry.text.toString()
         val cvv = binding.etCvv.text.toString()
 
-        viewModel.saveNewCreditCard(cardNumber, surname, name, expiry, cvv)
+        viewModel.saveNewCreditCard(surname, name, cardNumber, expiry, cvv)
     }
-
 }

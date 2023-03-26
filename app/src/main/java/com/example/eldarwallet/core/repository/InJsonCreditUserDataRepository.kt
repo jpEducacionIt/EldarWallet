@@ -2,6 +2,6 @@ package com.example.eldarwallet.core.repository
 
 import com.example.eldarwallet.infrastructure.representation.UserVerificationData
 
-internal interface UserDataRepository {
-    fun find() : UserVerificationData
+internal interface InJsonCreditUserDataRepository {
+    fun find(): UserVerificationData
 }

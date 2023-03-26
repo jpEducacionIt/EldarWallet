@@ -9,26 +9,24 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eldarwallet.R
-import com.example.eldarwallet.infrastructure.representation.UserCardData
+import com.example.eldarwallet.core.domain.UserDataEntity
 
-class DashboardAdapter : ListAdapter<UserCardData, DashboardAdapter.ViewHolder>(DiffCallBack) {
+class DashboardAdapter : ListAdapter<UserDataEntity, DashboardAdapter.ViewHolder>(DiffCallBack) {
 
-    lateinit var onItemClickListener: (UserCardData) -> Unit
+    lateinit var onItemClickListener: (UserDataEntity) -> Unit
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val creditCardNumber: TextView = view.findViewById(R.id.item_list_card_number)
         private val creditCardImage: ImageView = view.findViewById(R.id.itemListCarLogo)
 
-        fun bind (card: UserCardData) {
-            creditCardNumber.text = card.number
+        fun bind (card: UserDataEntity) {
+            creditCardNumber.text = card.number.takeLast(4)
 
             val image = when(card.typeCard) {
                 "3" -> R.drawable.amex
-                "4" -> R.drawable.mastercard
-                else -> {R.drawable.visa}
+                "4" -> R.drawable.visa
+                else -> {R.drawable.mastercard}
             }
-
-
 
             creditCardImage.setImageResource(image)
 
@@ -50,12 +48,12 @@ class DashboardAdapter : ListAdapter<UserCardData, DashboardAdapter.ViewHolder>(
         holder.bind(userData)
     }
 
-    companion object DiffCallBack : DiffUtil.ItemCallback<UserCardData>() {
-        override fun areItemsTheSame(oldItem: UserCardData, newItem: UserCardData): Boolean {
+    companion object DiffCallBack : DiffUtil.ItemCallback<UserDataEntity>() {
+        override fun areItemsTheSame(oldItem: UserDataEntity, newItem: UserDataEntity): Boolean {
             return  oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: UserCardData, newItem: UserCardData): Boolean {
+        override fun areContentsTheSame(oldItem: UserDataEntity, newItem: UserDataEntity): Boolean {
             return oldItem == newItem
         }
     }

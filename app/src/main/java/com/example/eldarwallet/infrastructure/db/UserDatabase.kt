@@ -9,19 +9,29 @@ import com.example.eldarwallet.infrastructure.db.dao.UserDataDao
 
 @Database(entities = [UserDataEntity::class], version = 1)
 abstract class UserDatabase : RoomDatabase() {
-    abstract fun getUserDataDao() : UserDataDao
-}
+    abstract fun getUserDataDao(): UserDataDao
 
-private lateinit var INSTANCE: UserDatabase
+    companion object {
+        @Volatile
+        private var INSTANCE: UserDatabase? = null
 
-fun getDataBase(context: Context): UserDatabase {
-    synchronized(UserDatabase::class.java) {
-        if (!::INSTANCE.isInitialized) {
-            INSTANCE = Room.databaseBuilder(
-                context.applicationContext,
-                UserDatabase::class.java,
-                "user_db").build()
+        fun getDataBase(context: Context): UserDatabase {
+            val tempInstance = INSTANCE
+            if (tempInstance != null) {
+                return tempInstance
+            }
+            synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    UserDatabase::class.java,
+                    "user_db"
+                ).build()
+                INSTANCE = instance
+                return instance
+            }
         }
     }
-    return INSTANCE
 }
+
+
+

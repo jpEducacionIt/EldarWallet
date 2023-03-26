@@ -44,10 +44,8 @@ class DashboardFragment : Fragment() {
             adapter = dashboardAdapter
         }
 
-        viewModel.onShow()
-
-        viewModel.userVerificationData.observe(viewLifecycleOwner, Observer {
-            dashboardAdapter.submitList(it.cardData)
+        viewModel.userCreditData.observe(viewLifecycleOwner, Observer {
+            dashboardAdapter.submitList(it)
         })
 
         binding.buttonAddCard.setOnClickListener {

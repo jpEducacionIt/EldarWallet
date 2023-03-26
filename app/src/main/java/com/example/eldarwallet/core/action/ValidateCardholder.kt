@@ -1,11 +1,11 @@
 package com.example.eldarwallet.core.action
 
 import com.example.eldarwallet.core.domain.CardHolderResponse
-import com.example.eldarwallet.infrastructure.repository.InJsonUserDataRepositoryImp
+import com.example.eldarwallet.infrastructure.repository.InJsonCreditUserDataRepositoryImp
 import com.example.eldarwallet.infrastructure.representation.UserVerificationData
 
 class ValidateCardholder(
-    private val jsonUserDataRepository: InJsonUserDataRepositoryImp
+    private val jsonUserDataRepository: InJsonCreditUserDataRepositoryImp
 ) {
     operator fun invoke(actionData: ActionData): CardHolderResponse {
         val userVerificationData = jsonUserDataRepository.find()

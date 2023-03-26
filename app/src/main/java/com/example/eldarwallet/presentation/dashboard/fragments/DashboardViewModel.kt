@@ -2,26 +2,21 @@ package com.example.eldarwallet.presentation.dashboard.fragments
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.eldarwallet.core.action.GetUserVerificationData
-import com.example.eldarwallet.infrastructure.repository.InJsonUserDataRepositoryImp
-import com.example.eldarwallet.infrastructure.representation.UserVerificationData
-import kotlinx.coroutines.launch
+import com.example.eldarwallet.core.action.GetAllCreditCardsData
+import com.example.eldarwallet.core.domain.UserDataEntity
+import com.example.eldarwallet.infrastructure.db.UserDatabase
+import com.example.eldarwallet.infrastructure.repository.InAppCreditUserDataRepositoryImp
 
 class DashboardViewModel(application: Application) : ViewModel() {
 
-    private val _userVerificationData = MutableLiveData<UserVerificationData>()
-    val repository = InJsonUserDataRepositoryImp(application)
-    val getUserVerificationData = GetUserVerificationData(repository)
+    private val database = UserDatabase.getDataBase(application)
+    private val repository = InAppCreditUserDataRepositoryImp(database)
+    private val getAllCreditCardsData = GetAllCreditCardsData(repository)
 
-    val userVerificationData: LiveData<UserVerificationData>
-        get() = _userVerificationData
+    val userCreditData : LiveData<List<UserDataEntity>>
 
-    fun onShow() {
-        viewModelScope.launch {
-            _userVerificationData.value = getUserVerificationData()
-        }
+    init {
+        userCreditData = getAllCreditCardsData()
     }
 }
