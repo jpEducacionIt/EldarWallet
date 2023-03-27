@@ -1,0 +1,55 @@
+Caso register + login
+QA
+- Ingreso por primera vez a la aplicacion.
+- Visualizo el texto registrar en el boton de la pantalla.
+- Ingreso mi usuario + password
+- Visualizo el texto de login en el boton de la pantalla.
+- Al presionar el boton navego a la pantalla de dashboard.
+
+Caso login invalido
+QA
+- Visualizo el texto login en el boton de la pantalla.
+- Ingreso un usuario "pepe"  + password "123456"
+- Visualizo el error de datos ingresados incorrectos.
+- No navega a la pantalla siguiente.
+
+Caso cadform datos correctos.
+QA
+- En el dashboard presiono el boton agregar tarjeta.
+- Ingreso los siguientes datos:
+        -card number: 371180303257522
+        al presionar el primer digito debo visualizar el logo de Amex.
+        -name: pepe
+        -surname: grillo
+        expiry: 1125
+        cvv: 1234
+- Presiono el boton add card
+- Navego al dashboard y visualizo la card agregada
+
+Caso cadform datos incorrectos.
+QA
+- En el dashboard presiono el boton agregar tarjeta.
+- Ingreso los siguientes datos:
+        -card number: 371180303257522
+        al presionar el primer digito debo visualizar el logo de Amex.
+        -name: juan
+        -surname: perez
+        expiry: 1125
+        cvv: 1234
+- Presiono el boton add card
+- Visualizo el mensaje que los datos no son validos
+- No navego a la pantalla de dashboard.
+
+Caso cadform datos incorrectos.
+QA
+- En el dashboard presiono el boton agregar tarjeta.
+- Ingreso los siguientes datos:
+        -card number: 4509953566233704
+        al presionar el primer digito debo visualizar el logo de Visa.
+        -name: pepe
+        -surname: grillo
+        expiry: 1125
+        cvv:
+- Presiono el boton add card
+- Visualizo el mensaje en el campo de cvv mostrando el error.
+- No navego a la pantalla de dashboard.
