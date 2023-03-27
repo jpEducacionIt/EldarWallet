@@ -5,10 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.eldarwallet.core.action.GetAllCreditCardsData
 import com.example.eldarwallet.core.action.GetCreditCardsDataDecrypt
-import com.example.eldarwallet.core.action.SaveNewCreditCard
 import com.example.eldarwallet.core.action.UserDataDecrypt
 import com.example.eldarwallet.core.domain.UserDataEntity
-import com.example.eldarwallet.infrastructure.AESEncryption
 import com.example.eldarwallet.infrastructure.db.UserDatabase
 import com.example.eldarwallet.infrastructure.repository.InAppCreditUserDataRepositoryImp
 

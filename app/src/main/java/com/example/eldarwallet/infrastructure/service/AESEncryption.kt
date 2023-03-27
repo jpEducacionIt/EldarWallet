@@ -1,4 +1,4 @@
-package com.example.eldarwallet.infrastructure
+package com.example.eldarwallet.infrastructure.service
 
 import android.util.Base64
 import javax.crypto.Cipher
@@ -9,11 +9,11 @@ import javax.crypto.spec.SecretKeySpec
 
 object AESEncryption {
 
-    const val secretKey = "tK5UTui+DPh8lIlBxya5XVsmeDCoUl6vHhdIESMB6sQ="
-    const val salt = "QWlGNHNhMTJTQWZ2bGhpV3U=" // base64 decode => AiF4sa12SAfvlhiWu
-    const val iv = "bVQzNFNhRkQ1Njc4UUFaWA==" // base64 decode => mT34SaFD5678QAZX
+    private const val secretKey = "tK5UTui+DPh8lIlBxya5XVsmeDCoUl6vHhdIESMB6sQ="
+    private const val salt = "QWlGNHNhMTJTQWZ2bGhpV3U=" // base64 decode => AiF4sa12SAfvlhiWu
+    private const val iv = "bVQzNFNhRkQ1Njc4UUFaWA==" // base64 decode => mT34SaFD5678QAZX
 
-    fun encrypt(strToEncrypt: String): String?
+    fun encrypt(strToEncrypt: String): String
     {
         try
         {
@@ -32,10 +32,10 @@ object AESEncryption {
         {
             println("Error while encrypting: $e")
         }
-        return null
+        return strToEncrypt
     }
 
-    fun decrypt(strToDecrypt : String) : String? {
+    fun decrypt(strToDecrypt : String) : String {
         try
         {
             val ivParameterSpec =  IvParameterSpec(Base64.decode(iv, Base64.DEFAULT))
@@ -52,6 +52,6 @@ object AESEncryption {
         catch (e : Exception) {
             println("Error while decrypting: $e");
         }
-        return null
+        return strToDecrypt
     }
 }

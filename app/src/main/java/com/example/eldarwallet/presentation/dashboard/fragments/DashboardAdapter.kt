@@ -21,7 +21,7 @@ class DashboardAdapter : ListAdapter<UserDataDecrypt, DashboardAdapter.ViewHolde
         private val creditCardImage: ImageView = view.findViewById(R.id.itemListCarLogo)
 
         fun bind (card: UserDataDecrypt) {
-            creditCardNumber.text = card.number?.takeLast(4) ?: "5"
+            creditCardNumber.text = card.number.takeLast(4)
 
             val image = when(card.typeCard) {
                 "3" -> R.drawable.amex

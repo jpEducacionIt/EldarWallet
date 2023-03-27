@@ -1,7 +1,7 @@
 package com.example.eldarwallet.core.action
 
 import com.example.eldarwallet.core.domain.UserDataEntity
-import com.example.eldarwallet.infrastructure.AESEncryption
+import com.example.eldarwallet.infrastructure.service.AESEncryption
 import com.example.eldarwallet.infrastructure.repository.InAppCreditUserDataRepositoryImp
 
 class SaveNewCreditCard(
