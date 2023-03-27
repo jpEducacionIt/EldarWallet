@@ -44,7 +44,8 @@ class DashboardFragment : Fragment() {
         }
 
         viewModel.userCreditData.observe(viewLifecycleOwner, Observer {
-            dashboardAdapter.submitList(viewModel.decryptUserData(it))
+            val userDataDecrypt = viewModel.decryptUserData(it)
+            dashboardAdapter.submitList(userDataDecrypt)
         })
 
         binding.buttonAddCard.setOnClickListener {

@@ -6,11 +6,8 @@ import com.example.eldarwallet.infrastructure.AESEncryption
 class GetCreditCardsDataDecrypt {
 
     operator fun invoke(userDataEntities: List<UserDataEntity>): List<UserDataDecrypt> {
-        val list: MutableList<UserDataDecrypt> = mutableListOf()
-        userDataEntities.forEach {
-            list.add(it.toUserData())
-        }
-        return list
+        userDataEntities.map { it.toUserData() }
+        return userDataEntities.map { it.toUserData() }
     }
 
     private fun UserDataEntity.toUserData() = UserDataDecrypt(
