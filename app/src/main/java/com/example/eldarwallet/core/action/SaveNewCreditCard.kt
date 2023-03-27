@@ -1,7 +1,7 @@
 package com.example.eldarwallet.core.action
 
-import com.example.eldarwallet.core.domain.CardHolderResponse
 import com.example.eldarwallet.core.domain.UserDataEntity
+import com.example.eldarwallet.infrastructure.AESEncryption
 import com.example.eldarwallet.infrastructure.repository.InAppCreditUserDataRepositoryImp
 
 class SaveNewCreditCard(
@@ -10,7 +10,6 @@ class SaveNewCreditCard(
     suspend operator fun invoke(actionData: ActionData) {
         roomUserDataRepository.insert(actionData.toUserDataEntity())
     }
-
     data class ActionData(
         val id : Int,
         val surname: String,
@@ -23,10 +22,10 @@ class SaveNewCreditCard(
     private fun ActionData.toUserDataEntity() = UserDataEntity(
         id = 0,
         typeCard = number.first().toString(),
-        name = name,
-        surname = surname,
-        number = number,
-        cvv = cvv,
-        expired = expiry
+        name = AESEncryption.encrypt(name),
+        surname = AESEncryption.encrypt(surname),
+        number = AESEncryption.encrypt(number),
+        cvv = AESEncryption.encrypt(cvv),
+        expiry = AESEncryption.encrypt(expiry)
     )
 }
