@@ -54,7 +54,7 @@
         <ImageButton
             android:id="@+id/buttonQr"
             app:layout_constraintBottom_toBottomOf="@+id/buttonAddCard"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+            app:layout_constraintEnd_toStartOf="@+id/buttonPaymentMethod"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/buttonAddCard"
             app:srcCompat="@drawable/baseline_qr_code_2_24"
@@ -63,7 +63,7 @@
             android:backgroundTint="@color/yellow" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/buttonPaymentMethod"
             app:layout_constraintBottom_toBottomOf="@+id/buttonQr"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -75,9 +75,9 @@
 
         <TextView
             android:id="@+id/textView5"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton3"
-            app:layout_constraintStart_toStartOf="@+id/imageButton3"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+            app:layout_constraintEnd_toEndOf="@+id/buttonPaymentMethod"
+            app:layout_constraintStart_toStartOf="@+id/buttonPaymentMethod"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPaymentMethod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -142,7 +142,7 @@
             android:layout_marginBottom="24dp"
             android:textSize="24dp"
             android:textStyle="bold"
-            tools:text="$ 00000,00" />
+            tools:text="$ 16999,00" />
 
         <TextView
             android:id="@+id/tvAccountNumber"
@@ -152,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Cuentas " />
+            android:text="Cuentas: 165-16744" />
 
         <ImageView
             android:id="@+id/ivHideBalance"
