@@ -38,5 +38,9 @@
         android:id="@+id/paymentFragment"
         android:name="com.example.eldarwallet.presentation.payment.PaymentFragment"
         android:label="fragment_payment"
-        tools:layout="@layout/fragment_payment" />
+        tools:layout="@layout/fragment_payment" >
+        <argument
+            android:name="userdata"
+            app:argType="com.example.eldarwallet.core.action.UserDataDecrypt" />
+    </fragment>
 </navigation>

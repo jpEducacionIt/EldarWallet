@@ -19,6 +19,7 @@ class DashboardAdapter : ListAdapter<UserDataDecrypt, DashboardAdapter.ViewHolde
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val creditCardNumber: TextView = view.findViewById(R.id.item_list_card_number)
         private val creditCardImage: ImageView = view.findViewById(R.id.itemListCarLogo)
+        private val cardSelected: ImageView = view.findViewById(R.id.ivIsSelected)
 
         fun bind (card: UserDataDecrypt) {
             creditCardNumber.text = card.number.takeLast(4)
@@ -31,7 +32,12 @@ class DashboardAdapter : ListAdapter<UserDataDecrypt, DashboardAdapter.ViewHolde
 
             creditCardImage.setImageResource(image)
 
+            with(cardSelected) {
+                if (card.isSelected) this.visibility = View.VISIBLE else this.visibility = View.INVISIBLE
+            }
+
             view.setOnClickListener {
+                cardSelected.visibility = View.INVISIBLE
                 onItemClickListener(card)
             }
         }

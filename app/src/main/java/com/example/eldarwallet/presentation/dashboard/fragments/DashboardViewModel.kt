@@ -19,7 +19,7 @@ class DashboardViewModel(application: Application) : ViewModel() {
 
     val userCreditData : LiveData<List<UserDataEntity>> = getAllCreditCardsData()
 
-    fun decryptUserData(userDataEntities: List<UserDataEntity>) : List<UserDataDecrypt> {
+    fun decryptUserData(userDataEntities: List<UserDataEntity>) : MutableList<UserDataDecrypt> {
        return getAllCreditCardsDataDecrypt(userDataEntities)
     }
 }

@@ -20,13 +20,17 @@ class DashboardFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var dashboardAdapter: DashboardAdapter
     private var isPaymentSelected: Boolean = false
+    private var usersDataDecrypt: MutableList<UserDataDecrypt> = mutableListOf()
     private lateinit var userData: UserDataDecrypt
 
-    private val viewModel by viewModels<DashboardViewModel> { DashboardViewModelFactory(requireActivity().application) }
+    private val viewModel by viewModels<DashboardViewModel> {
+        DashboardViewModelFactory(
+            requireActivity().application
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -48,8 +52,8 @@ class DashboardFragment : Fragment() {
         }
 
         viewModel.userCreditData.observe(viewLifecycleOwner, Observer {
-            val userDataDecrypt = viewModel.decryptUserData(it)
-            dashboardAdapter.submitList(userDataDecrypt)
+            usersDataDecrypt = viewModel.decryptUserData(it)
+            dashboardAdapter.submitList(usersDataDecrypt)
         })
 
         dashboardAdapter.onItemClickListener = {
@@ -65,17 +69,37 @@ class DashboardFragment : Fragment() {
         }
 
         binding.buttonPaymentMethod.setOnClickListener {
-            if (isPaymentSelected){
-                findNavController().navigate(R.id.action_dashboardFragment_to_paymentFragment)
+            if (isPaymentSelected) {
+                findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToPaymentFragment(userData))
             } else {
-                Toast.makeText(requireActivity(), "Debe seleccionar una tarjeta", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireActivity(),
+                    "Debe seleccionar una tarjeta",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
-    private fun selectPaymentMethod(userDataDecrypt: UserDataDecrypt) {
-        isPaymentSelected = true
-        this.userData = userDataDecrypt
+    private fun selectPaymentMethod(data: UserDataDecrypt) {
+        usersDataDecrypt.map {
+            it.isSelected = false
+        }
+        dashboardAdapter.notifyDataSetChanged()
+        !isPaymentSelected
+
+        usersDataDecrypt.indexOfFirst { userData ->
+            userData.id == data.id
+        }.let { position ->
+            usersDataDecrypt[position].apply {
+                isSelected = true
+                isPaymentSelected = true
+                usersDataDecrypt[position] = this
+                userData = this
+            }
+            dashboardAdapter.notifyItemChanged(position)
+        }
+
     }
 
     override fun onDestroyView() {
